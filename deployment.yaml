@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-app-deployment
+  namespace: default # Or your target namespace
+  labels:
+    app: ubuntu-app
+spec:
+  replicas: 1 # Start with 1 replica
+  selector:
+    matchLabels:
+      app: ubuntu-app
+  template:
+    metadata:
+      labels:
+        app: ubuntu-app
+    spec:
+      containers:
+      - name: ubuntu-app-deployment-container # <--- CRITICAL: Must match the name used in the Jenkinsfile patch command
+        image: your-registry/default-placeholder-image:latest # Replace with a temporary/initial image
+        ports:
+        - containerPort: 80
