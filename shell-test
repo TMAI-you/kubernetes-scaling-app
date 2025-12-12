@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage('Test Shell') {
+            steps {
+                // Test the shell that the pipeline uses
+                bat 'echo Jenkins environment is OK!'
+            }
+        }
+    }
+}
